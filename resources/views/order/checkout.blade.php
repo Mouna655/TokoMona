@@ -16,7 +16,7 @@
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <h2 class="text-xl font-bold text-gray-900 mb-6">Data Pemesan</h2>
                     
-                    <form action="{{ "#" }}" method="POST">
+                    <form action="{{ route('order.store') }}" method="POST">
                         @csrf
                         
                         <div class="space-y-4">

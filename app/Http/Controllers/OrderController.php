@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderItem;
 
 class OrderController extends Controller
 {
@@ -77,8 +82,17 @@ class OrderController extends Controller
 
             return redirect()->route('order.success', $order->id)->with('success', 'Pesanan berhasil dibuat!');
         } catch (\Exception $e) {
+
             DB::rollBack();
+
+            Log::error('Order creation failed: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Terjadi kesalahan saat memproses pesanan. Silakan coba lagi.')->withInput();
         }
+    }
+
+    public function success($id)
+    {
+        $order = Order::with('orderItems.product')->findOrFail($id);
+        return view('order.success', compact('order'));
     }
 }

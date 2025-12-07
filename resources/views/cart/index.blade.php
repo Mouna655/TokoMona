@@ -82,7 +82,7 @@
                         
                         <a href="{{ route('home') }}" class="block text-center text-indigo-500 hover:text-indigo-700 mb-4">Lanjut Belanja</a>
                         
-                        <a href="{{ '#' }}" class="block w-full bg-indigo-500 text-white py-3 px-6 rounded-lg hover:bg-indigo-600 font-medium text-center">
+                        <a href="{{ route('order.checkout') }}" class="block w-full bg-indigo-500 text-white py-3 px-6 rounded-lg hover:bg-indigo-600 font-medium text-center">
                             Checkout
                         </a>
                     </div>
