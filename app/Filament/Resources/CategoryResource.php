@@ -49,10 +49,18 @@ class CategoryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->requiresConfirmation(true),
+                // Tables\Actions\Action::make('export')
+                //     ->label('Export')
+                //     ->color('success'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\Action::make('export')
+                        ->label('Export')
+                        ->color('success'),
                 ]),
             ]);
     }
