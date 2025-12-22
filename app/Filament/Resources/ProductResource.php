@@ -44,6 +44,10 @@ class ProductResource extends Resource
                     ->relationship('categories', 'category_name')
                     ->multiple()
                     ->preload(),
+                Forms\Components\Select::make('tags')
+                    ->relationship('tags', 'tag_name')
+                    ->placeholder('Pilih Salah Satu Tags')
+                    ->preload(),
                 Forms\Components\Textarea::make('product_description_short')
                     ->label('Short Description')
                     ->required()
@@ -82,6 +86,9 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('categories.category_name')
                     ->badge()
                     ->color('success'),
+                Tables\Columns\TextColumn::make('tags.tag_name')
+                    ->badge()
+                    ->color('primary'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
